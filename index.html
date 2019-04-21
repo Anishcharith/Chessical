@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Chessical</title>
+
+  <link rel="stylesheet" href="External/chessboard-0.3.0.css" />
+</head>
+<body>
+
+
+<!-- start example HTML --->
+<div id="board" style="width: 400px"></div>
+<p>Status: <span id="status"></span></p>
+<p>FEN: <span id="fen"></span></p>
+<p>PGN: <span id="pgn"></span></p>
+<!-- end example HTML --->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+<script src="External/chessboard-0.3.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
+<script src="random_moves.js"></script>
+<script src="External/Tone.js"></script>
+<script src="sounds.js"></script>
+<script>board.position(game.fen());</script>
+  
+</body>
+</html>
