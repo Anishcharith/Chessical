@@ -1,9 +1,3 @@
-var board,
-  game = new Chess();
-statusEl = $('#status'),
-  fenEl = $('#fen'),
-  pgnEl = $('#pgn');
-
 var makeRandomMove = function() {
   var possibleMoves = game.moves();
 
@@ -11,54 +5,17 @@ var makeRandomMove = function() {
   if (game.game_over() === true ||
     game.in_draw() === true ||
     possibleMoves.length === 0) return;
-
   var randomIndex = Math.floor(Math.random() * possibleMoves.length);
   game.move(possibleMoves[randomIndex]);
   board.position(game.fen());
   from = game.history({verbose:true}).pop().from
-  console.log(from);
-  generate_sound(from);
+  to = game.history({verbose:true}).pop().to
+  console.log(from, to);
+  generate_sound(from, to);
   updateStatus();
 
   window.setTimeout(makeRandomMove, 500);
   
 
 };
-
-board = ChessBoard('board', 'start');
-
 window.setTimeout(makeRandomMove, 500);
-
-var updateStatus = function() {
-  var status = '';
-
-  var moveColor = 'White';
-  if (game.turn() === 'b') {
-    moveColor = 'Black';
-  }
-
-  // checkmate?
-  if (game.in_checkmate() === true) {
-    status = 'Game over, ' + moveColor + ' is in checkmate.';
-  }
-
-  // draw?
-  else if (game.in_draw() === true) {
-    status = 'Game over, drawn position';
-  }
-
-  // game still on
-  else {
-    status = moveColor + ' to move';
-
-    // check?
-    if (game.in_check() === true) {
-      status += ', ' + moveColor + ' is in check';
-    }
-  }
-
-  statusEl.html(status);
-  fenEl.html(game.fen());
-  pgnEl.html(game.pgn());
-};
-
