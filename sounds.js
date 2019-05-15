@@ -9,10 +9,13 @@ function generate_sound(from, to){
 		synth.triggerAttackRelease(from, '8n');
 }
 */
-var interval = 0.2
+var interval = .200
 function generate_sound(from,to){
   var time = Tone.context.currentTime
   temp = from[0]
+  //no_of_moves=Math.max(Math.abs(from[0].charCodeAt(0)-to[0].charCodeAt(0)), Math.abs(from[1]-to[1]))
+  no_of_moves=1
+  console.log(no_of_moves+1)
   //count ver used to increase or decrease to pitch ie sa re ga - ga re sa when pieces move horizontally
   var count = -1
   //horizontal direction octave sa0 re ga ma pa dha ni sa1, here sa1 has the same pitch when the s0 is scaled once to next higher octave scale 
@@ -37,11 +40,11 @@ function generate_sound(from,to){
       //(note tune to play, time duration, when to play)
       // duration for high pitched sounds reduced to make it more soothing
       if(i<3)
-        synth.triggerAttackRelease(move, 0.3, time+=interval)
+        synth.triggerAttackRelease(move, 0.3, time+=interval/no_of_moves)
       else if(i<6)
-        synth.triggerAttackRelease(move, 0.2, time+=interval)
+        synth.triggerAttackRelease(move, 0.2, time+=interval/no_of_moves)
       else
-        synth.triggerAttackRelease(move, 0.1, time+=interval)
+        synth.triggerAttackRelease(move, 0.1, time+=interval/no_of_moves)
       console.log(move)
     }
   }
@@ -61,11 +64,11 @@ function generate_sound(from,to){
       var move = temp.toUpperCase()+i.toString()
       if(move[0] == "H") move = "A" + (i+1)
       if(i>=0 && i<3)
-        synth.triggerAttackRelease(move, 0.3, time+=interval)
+        synth.triggerAttackRelease(move, 0.3, time+=interval/no_of_moves)
       else if(i>=3 && i<6)
-        synth.triggerAttackRelease(move, 0.2, time+=interval)
+        synth.triggerAttackRelease(move, 0.2, time+=interval/no_of_moves)
       else
-        synth.triggerAttackRelease(move, 0.1, time+=interval)
+        synth.triggerAttackRelease(move, 0.1, time+=interval/no_of_moves)
       console.log(move)
     }
   }
@@ -80,11 +83,11 @@ function generate_sound(from,to){
         if(move[0] == "H") move = "A" + String.fromCharCode(from[1].charCodeAt(0))
         console.log(move)
         if(tempNum>=0 && tempNum<3)
-          synth.triggerAttackRelease(move, 0.3, time+=interval)
+          synth.triggerAttackRelease(move, 0.3, time+=interval/no_of_moves)
         else if(tempNum>=3 && tempNum<6)
-          synth.triggerAttackRelease(move, 0.2, time+=interval)
+          synth.triggerAttackRelease(move, 0.2, time+=interval/no_of_moves)
         else
-          synth.triggerAttackRelease(move, 0.1, time+=interval)
+          synth.triggerAttackRelease(move, 0.1, time+=interval/no_of_moves)
       }
     }
     else{
@@ -95,11 +98,11 @@ function generate_sound(from,to){
         if(move[0] == "H") move = "A" + String.fromCharCode(from[1].charCodeAt(0))
         console.log(move)
         if(tempNum>=0 && tempNum<3)
-          synth.triggerAttackRelease(move, 0.3, time+=interval)
+          synth.triggerAttackRelease(move, 0.3, time+=interval/no_of_moves)
         else if(tempNum>=3 && tempNum<6)
-          synth.triggerAttackRelease(move, 0.2, time+=interval)
+          synth.triggerAttackRelease(move, 0.2, time+=interval/no_of_moves)
         else
-          synth.triggerAttackRelease(move, 0.1, time+=interval)  
+          synth.triggerAttackRelease(move, 0.1, time+=interval/no_of_moves)  
 
       }
     }
