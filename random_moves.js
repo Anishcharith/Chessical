@@ -13,9 +13,15 @@ var makeRandomMove = function() {
   console.log(from, to);
   generate_sound(from, to);
   updateStatus();
-
-  window.setTimeout(makeRandomMove, 500);
+  no_of_moves=Math.max(Math.abs(from[0].charCodeAt(0)-to[0].charCodeAt(0)), Math.abs(from[1]-to[1]))+1;
+  console.log(no_of_moves)
+  
+  if(play=='play')
+  	window.setTimeout(call_makeRandomMove, 200*no_of_moves);
   
 
 };
-window.setTimeout(makeRandomMove, 500);
+
+function call_makeRandomMove(){
+	makeRandomMove();
+}

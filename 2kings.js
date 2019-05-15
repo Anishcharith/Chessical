@@ -1,4 +1,3 @@
-var play='pause'
 var two_kings = function(){
   var possibleMoves = game.moves();
 
@@ -11,21 +10,13 @@ var two_kings = function(){
   console.log(from, to);
   generate_sound(from, to);
   updateStatus();
+  no_of_moves=Math.max(Math.abs(from[0].charCodeAt(0)-to[0].charCodeAt(0)), Math.abs(from[1]-to[1]))
+  console.log(no_of_moves)
 
   if(play=='play')
-  	window.setTimeout(two_kings, 500);
+  	window.setTimeout(call_two_kings, 200*(no_of_moves+1));
 };
-
-function pause(){
-	play='pause'
+function call_two_kings(){
+	two_kings();
 }
 
-function resume(){
-	play='play';
-	window.setTimeout(two_kings,500);
-}
-
-function restart(){
-	game = new Chess('4k1n1/8/8/8/8/8/8/1N2K3 w - - 12 42'); // 2 kings 2 knights
-  	board.position(game.fen());
-}
