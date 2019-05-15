@@ -12,6 +12,8 @@
 
 <!-- start example HTML --->
 <div id="board" style="width: 400px"></div>
+<input  type="button" value="play" id="pause_play" onclick="change()"></input>
+<input  type="button" value="restart" id="restart" onclick="restart()"></input>
 <p>Status: <span id="status"></span></p>
 <p>FEN: <span id="fen"></span></p>
 <p>PGN: <span id="pgn"></span></p>
@@ -25,6 +27,20 @@
 <script src="External/Tone.js"></script>
 <script src="sounds.js"></script>
 <script>board.position(game.fen());</script>
-  
+<script>
+function change()
+{
+    var elem = document.getElementById("pause_play");
+    console.log(elem)
+    if (elem.value=="pause"){
+		elem.value = "play";
+		pause();
+	}
+	else {
+		elem.value = "pause";
+		resume();
+	}
+}
+</script>
 </body>
 </html>
