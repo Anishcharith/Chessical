@@ -52,10 +52,12 @@ function pause(){
 
 function resume(){
 	play='play';
-	makeRandomMove();
+	makeMove();
 }
 
 function restart(){
 	game = new Chess(game_fen); //2 kings
   	board.position(game.fen());
+  	count=-1
+  	moves=-1
 }
